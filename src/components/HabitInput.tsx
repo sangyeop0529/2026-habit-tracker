@@ -11,14 +11,17 @@ const HabitInput = ({ onAdd }: HabitInputProps) => {
   const [category, setCategory] = useState<Category>("운동");
 
   const handleAddHabit = () => {
-    if (!name.trim()) return;
+    if (!name.trim()) {
+      alert("습관 이름을 입력해주세요.");
+      return;
+    }
     onAdd(name, category);
     setCategory("운동");
     setName("");
   };
 
   return (
-    <div>
+    <div className="habit-input">
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
       <select value={category} onChange={(e) => setCategory(e.target.value as Category)}>
         {categories.map((cate) => (
@@ -27,7 +30,9 @@ const HabitInput = ({ onAdd }: HabitInputProps) => {
           </option>
         ))}
       </select>
-      <button onClick={handleAddHabit}>생성</button>
+      <button className="btn-add btn" onClick={handleAddHabit}>
+        생성
+      </button>
     </div>
   );
 };

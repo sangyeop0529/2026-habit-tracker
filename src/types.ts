@@ -9,3 +9,5 @@ export interface Habit {
 }
 
 export type CategoryFilter = Category | "전체";
+
+export type SortBy = "없음" | "streak" | "완료율";
